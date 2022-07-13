@@ -48,5 +48,11 @@ if [ "$DEBUG" == "y" ]; then
    PARAMS="$PARAMS --debug";
 fi
 
+# Allow the user to add additional params.
+read -p "Additional params? (optional) " ADDITIONAL;
+if [ -n "$ADDITIONAL" ]; then
+   PARAMS="$PARAMS $ADDITIONAL";
+fi
+
 sudo woeusb --target-filesystem "$FS" --device "$ISO" "$DEVICE" $PARAMS;
 exit;
